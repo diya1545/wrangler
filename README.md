@@ -197,6 +197,48 @@ CDAP IRC Channel: [#cdap on irc.freenode.net](http://webchat.freenode.net?channe
 
 CDAP Users on Slack: [cdap-users team](https://cdap-users.herokuapp.com)
 
+### Contribution: Wrangler Assignment Enhancement
+Features Added:
+New Token Types
+
+ByteSize: Parses values like "1KB", "1.5MB", "2GB" into bytes
+
+TimeDuration: Parses values like "100ms", "1.5s", "2m" into milliseconds
+
+New Directive: aggregate-stats
+
+Aggregates byte size and time duration across all rows
+
+Usage:
+
+ruby
+Copy code
+aggregate-stats :input_size :response_time :total_mb :total_sec
+Output:
+
+total_mb: sum of all sizes in MB
+
+total_sec: sum of all durations in seconds
+
+📄 Code Implemented In:
+ByteSize.java
+
+TimeDuration.java
+
+AggregateStats.java
+
+🧪 Tests Added:
+TokenParsingTest.java: tests for ByteSize and TimeDuration parsing
+
+AggregateStatsTest.java: full test for aggregation directive
+
+📦 Grammar Update:
+Modified Directives.g4 to support new tokens:
+
+antlr
+Copy code
+BYTE_SIZE : [0-9]+ ('.' [0-9]+)? ( 'B' | 'KB' | 'MB' | 'GB' );
+TIME_DURATION : [0-9]+ ('.' [0-9]+)? ( 'ms' | 's' | 'm' );
 
 ## License and Trademarks
 
