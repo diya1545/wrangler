@@ -302,6 +302,33 @@ public final class RecipeVisitor extends DirectivesBaseVisitor<RecipeSymbol.Buil
   }
 
   /**
+ * This visitor method extracts those values and adds the appropriate Token to the TokenGroup.
+ * This enables the support for BYTE_SIZE and TIME_DURATION token types in recipes,
+ * allowing users to directly use values like "10KB", "1.5MB", "200ms", or "2s"
+ * without needing manual conversions.
+ */
+@Override
+public RecipeSymbol.Builder visitValue(DirectivesParser.ValueContext ctx) {
+  if (ctx.BYTE_SIZE() != null) {
+    builder.addToken(new io.cdap.wrangler.api.parser.ByteSize(ctx.BYTE_SIZE().getText()));
+  } else if (ctx.TIME_DURATION() != null) {
+    builder.addToken(new io.cdap.wrangler.api.parser.TimeDuration(ctx.TIME_DURATION().getText()));
+  } else if (ctx.Number() != null) {
+    builder.addToken(new Numeric(new LazyNumber(ctx.Number().getText())));
+  } else if (ctx.String() != null) {
+    String value = ctx.String().getText();
+    builder.addToken(new Text(value.substring(1, value.length() - 1)));
+  } else if (ctx.Column() != null) {
+    builder.addToken(new ColumnName(ctx.Column().getText().substring(1)));
+  } else if (ctx.Bool() != null) {
+    builder.addToken(new Bool(Boolean.valueOf(ctx.Bool().getText())));
+  }
+
+  return builder;
+}
+
+
+  /**
    * This visitor methods extracts the list of strings specified. It creates a token
    * type <code>StringList</code> to be added to <code>TokenGroup</code>.
    */
