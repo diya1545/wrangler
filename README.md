@@ -197,9 +197,9 @@ CDAP IRC Channel: [#cdap on irc.freenode.net](http://webchat.freenode.net?channe
 
 CDAP Users on Slack: [cdap-users team](https://cdap-users.herokuapp.com)
 
-### Contribution: Wrangler Assignment Enhancement
+## Contribution: Wrangler Assignment Enhancement
 
-# Features Added:
+### Features Added:
 1. New Token Types
 ByteSize: Parses values like "1KB", "1.5MB", "2GB" into bytes
 
@@ -215,19 +215,19 @@ Output: total_mb : sum of all sizes in MB
 
 total_sec: sum of all durations in seconds
 
-# Code Implemented In:
+### Code Implemented In:
 ByteSize.java
 
 TimeDuration.java
 
 AggregateStats.java
 
-# Tests Added:
+### Tests Added:
 TokenParsingTest.java: tests for ByteSize and TimeDuration parsing
 
 AggregateStatsTest.java: full test for aggregation directive
 
-# Grammar Update:
+### Grammar Update:
 Modified Directives.g4 to support new tokens:
 
 BYTE_SIZE : [0-9]+ ('.' [0-9]+)? ( 'B' | 'KB' | 'MB' | 'GB' );
