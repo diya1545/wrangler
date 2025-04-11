@@ -1,0 +1,20 @@
+ChatGPT and Documentation Support Log
+
+1. How can I set up Maven properly in Visual Studio Code for a Java project?
+2. mvn command is not recognized — how to fix this in Windows?
+3. How to configure JAVA_HOME environment variable correctly for Maven?
+4. Which archive should I download to install Apache Maven on Windows?
+5. How to add support for ByteSize parsing in CDAP Wrangler?
+6. What’s the best way to parse units like KB, MB, GB and convert them into bytes in Java?
+7. How to create a custom token class ByteSize and integrate it into the Wrangler parser?
+8. How do I update the ANTLR grammar (`Directives.g4`) to include new units like ByteSize and TimeDuration?
+9. How to create and register new token types in TokenType.java?
+10. How to extend RecipeVisitor.java to recognize new tokens?
+11. What should be the structure of a new directive class like `AggregateStats` in Wrangler?
+12. How do I write JUnit test cases for a custom directive that aggregates ByteSize and TimeDuration?
+13. How to professionally write a README.md for an open-source enhancement assignment?
+
+
+Tools Used : 
+ChatGpt (for guidance and error solving)
+Maven (for setup help in VS Code)
